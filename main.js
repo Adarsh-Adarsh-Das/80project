@@ -1,54 +1,48 @@
-Name_array=[];
+var names_of_people = [];
+    
 function submit()
 {
-    var display_student=[];
-    for(var j=1; j<=4; j++)
-    {
-        var name1=document.getElementById("n"+j).value;
-
-        console.log(name1);
-        Name_array.push(name1);
-    }
-    
-
-    console.log(Name_array);
-    var length_array=Name_array.length;
-    console.log(length_array);
+    var GuestName = document.getElementById("name1").value;
+	names_of_people.push(GuestName);
+	console.log(GuestName);    
+    console.log(names_of_people);
+    var lenght_of_name = names_of_people.length;
+    console.log(lenght_of_name);
+	document.getElementById("display_name").innerHTML=names_of_people.toString();
+   }
 
 
-    for (var k = 0; k < length_array; k++)
-     { display_student.push("<h4>NAME-"+ Name_array[k] + "</h4>");
-      console.log(display_student);
-     }
 
-     console.log(display_student);
-
-    
-document.getElementById("display_name_with_commas").innerHTML=display_student;
-
-var removecommas=display_student.join(" ");
-console.log(removecommas);
-
-document.getElementById("display_name_without_commas").innerHTML=removecommas;
-
-document.getElementById("submit_button").style.display="none";
-document.getElementById("sort_button").style.display="inline-block";
-
-}
-function sorting()
+function show()
 {
-    Name_array.sort();
-    console.log(Name_array);
+	var i= names_of_people.join("<br>");
+	console.log(names_of_people);
+	document.getElementById("p1").innerHTML=i.toString();
+	document.getElementById("sort_button").style.display="block";
+	
+}
 
-    var display_sorting_student=[];
-    var len=Name_array.length;
-    console.log(len);
-    for(var k=0;k<len;k++)
-    {
-         display_sorting_student.push("<h4>NAME-"+ Name_array[k] + "</h4>");
-         console.log(display_sorting_student);
-    }
-    var removecommas=display_sorting_student.join(" ");
-    console.log(removecommas);
-    document.getElementById("display_name_without_commas").innerHTML=removecommas;
+
+function sorting()
+	{
+		names_of_people.sort();
+		var i= names_of_people.join("<br>");
+		console.log(names_of_people);		
+		document.getElementById("sorted").innerHTML=i.toString();
+		}
+
+
+function searching()
+{
+	var s= document.getElementById("s1").value;
+	var found=0;
+	var j;
+	for(j=0; j<names_of_people.length; j++)
+		{
+			if(s==names_of_people[j]){
+				found=found+1;
+			}	
+		}
+	document.getElementById("p2").innerHTML="name found "+found+" time/s";
+	console.log("found name "+found+" time/s");
 }
